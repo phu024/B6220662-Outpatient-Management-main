@@ -55,9 +55,6 @@ func main() {
 		}
 	}
 
-	// User Routes
-	r.POST("/patients", controller.CreatePatients)
-
 	// Authentication Routes
 	r.POST("/login", controller.LoginByRecorder)
 

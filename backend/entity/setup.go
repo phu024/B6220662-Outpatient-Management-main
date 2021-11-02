@@ -145,7 +145,7 @@ func SetupDatabase() {
 		Id_card:            "3333333333333",
 		FirstName:          "พิชญาภรณ์",
 		LastName:           "แสงตะวัน",
-		Gender:             male,
+		Gender:             female,
 		Birthdate:          time.Date(2005, 3, 2, 0, 0, 0, 0, time.UTC),
 		Age:                16,
 		Allergy:            a_none,
