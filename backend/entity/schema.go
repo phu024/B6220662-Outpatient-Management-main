@@ -11,7 +11,7 @@ type Recorder struct {
 	gorm.Model
 	FirstName string
 	LastName  string
-	Email     string
+	Email     string `gorm:"uniqueIndex"`
 	Password  string
 	// 1 Recorder มีได้หลาย Patient
 	Patient []Patient `gorm:"foreignKey:RecorderID"`
@@ -40,7 +40,7 @@ type Gender struct {
 
 type Patient struct {
 	gorm.Model
-	Id_card   string
+	Id_card   string `gorm:"uniqueIndex"`
 	FirstName string
 	LastName  string
 	Birthdate time.Time

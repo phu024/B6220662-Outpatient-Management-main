@@ -94,7 +94,7 @@ function CreatePatient() {
 
   const handleDateChange = (date: Date | null) => {
     console.log(date);
-    setSelectedDate(date);
+    setSelectedDate(date);  
   };
 
   const handleInputChange = (
