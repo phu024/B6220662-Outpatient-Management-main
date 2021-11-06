@@ -61,9 +61,7 @@ function CreatePatient() {
   const classes = useStyles();
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [genders, setGenders] = useState<GenderInterface[]>([]);
-  const [underlying_diseases, setUnderlying_diseases] = useState<
-    Underlying_diseaseInterface[]
-  >([]);
+  const [underlying_diseases, setUnderlying_diseases] = useState<Underlying_diseaseInterface[]>([]);
   const [allergys, setAllergys] = useState<AllergyInterface[]>([]);
   const [recorders, setRecorders] = useState<RecorderInterface>();
   const [patient, setPatient] = useState<Partial<PatientInterface>>({});
