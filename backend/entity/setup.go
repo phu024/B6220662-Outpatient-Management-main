@@ -1,7 +1,7 @@
 package entity
 
 import (
-	"time"
+	//"time"
 
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/driver/sqlite"
@@ -113,45 +113,6 @@ func SetupDatabase() {
 		Information: "โรคภูมิแพ้",
 	}
 	db.Model(&Underlying_disease{}).Create(&u_allergy)
-
-	//Patient 1
-	db.Model(&Patient{}).Create(&Patient{
-		Id_card:            "1111111111111",
-		FirstName:          "ปิติวัฒน์",
-		LastName:           "เลิศวิทยา",
-		Gender:             male,
-		Birthdate:          time.Date(2000, 2, 25, 0, 0, 0, 0, time.UTC),
-		Age:                21,
-		Allergy:            a_none,
-		Underlying_disease: u_allergy,
-		Recorder:           phuwadon,
-	})
-
-	//Patient 2
-	db.Model(&Patient{}).Create(&Patient{
-		Id_card:            "2222222222222",
-		FirstName:          "กิตติเดช",
-		LastName:           "ชนะสมบัติ",
-		Gender:             male,
-		Birthdate:          time.Date(2003, 8, 18, 0, 0, 0, 0, time.UTC),
-		Age:                18,
-		Allergy:            a_Aspirin,
-		Underlying_disease: u_cancer,
-		Recorder:           phuwadon,
-	})
-
-	//Patient 3
-	db.Model(&Patient{}).Create(&Patient{
-		Id_card:            "3333333333333",
-		FirstName:          "พิชญาภรณ์",
-		LastName:           "แสงตะวัน",
-		Gender:             female,
-		Birthdate:          time.Date(2005, 3, 2, 0, 0, 0, 0, time.UTC),
-		Age:                16,
-		Allergy:            a_none,
-		Underlying_disease: u_none,
-		Recorder:           phrae,
-	})
 
 	//--------------------------------------------//
 	//ภูมิชัย
