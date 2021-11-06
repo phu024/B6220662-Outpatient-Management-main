@@ -9,7 +9,6 @@ import Box from "@material-ui/core/Box";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { PatientInterface } from "../models/IPatient";
@@ -63,10 +62,10 @@ function ListPatient() {
       });
   };
   useEffect(() => {
-    getPatients();
     const token = localStorage.getItem("token");
     if (token) {
       setToken(token);
+      getPatients();
     }
   }, []);
 
@@ -140,7 +139,7 @@ function ListPatient() {
                     ประวัติการแพ้ยา
                   </TableCell>
                   <TableCell align="center" width="10%">
-                    เวชระเบียน
+                  เจ้าหน้าที่เวชระเบียน
                   </TableCell>
                 </TableRow>
               </TableHead>
