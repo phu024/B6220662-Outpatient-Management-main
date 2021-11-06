@@ -83,7 +83,6 @@ function ListPatient() {
               component="h2"
               variant="h4"
               color="primary"
-              gutterBottom
             >
               ระบบลงทะเบียนข้อมูลผู้ป่วย
             </Typography>
@@ -107,7 +106,6 @@ function ListPatient() {
                 component="h1"
                 variant="h6"
                 color="primary"
-                gutterBottom
               >
                 รายการผู้ป่วย
               </Typography>

@@ -186,7 +186,8 @@ function CreatePatient() {
       body: JSON.stringify(data),
     };
 
-    fetch(`${apiUrl}/patients`, requestOptionsPost)
+    if((data.Id_card)&&(data.FirstName)&&(data.LastName)&&(data.Age)){
+      fetch(`${apiUrl}/patients`, requestOptionsPost)
       .then((response) => response.json())
       .then((res) => {
         if (res.data) {
@@ -195,15 +196,19 @@ function CreatePatient() {
           setError(true);
         }
       });
+    }else{
+      setError(true);
+    }
+    
   }
   return (
     <Container className={classes.container} maxWidth="md">
-      <Snackbar open={success} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar open={success} autoHideDuration={4000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
           ลงทะเบียนสำเร็จ
         </Alert>
       </Snackbar>
-      <Snackbar open={error} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar open={error} autoHideDuration={4000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error">
           ลงทะเบียนไม่สำเร็จ
         </Alert>
@@ -298,6 +303,7 @@ function CreatePatient() {
                 onChange={handleInputChange}
                 value={patient.Age}
                 type="number"
+                inputProps={{ min: 0 }}
               />
             </FormControl>
           </Grid>
