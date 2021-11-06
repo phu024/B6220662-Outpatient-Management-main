@@ -97,14 +97,6 @@ function CreatePatient() {
     setSelectedDate(date);  
   };
 
-  const handleInputChange = (
-    event: React.ChangeEvent<{ id?: string; value: any }>
-  ) => {
-    const id = event.target.id as keyof typeof patient;
-    const { value } = event.target;
-    setPatient({ ...patient, [id]: value });
-  };
-
   const getGender = async () => {
     fetch(`${apiUrl}/genders`, requestOptions)
       .then((response) => response.json())
@@ -184,7 +176,7 @@ function CreatePatient() {
       body: JSON.stringify(data),
     };
 
-    if((data.Id_card)&&(data.FirstName)&&(data.LastName)&&(data.Age)){
+    if((data.Id_card)&&(data.FirstName)&&(data.LastName)&&(data.Age)&&(data.Age<=120)){
       fetch(`${apiUrl}/patients`, requestOptionsPost)
       .then((response) => response.json())
       .then((res) => {
@@ -223,12 +215,14 @@ function CreatePatient() {
           <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <TextField
-                id="Id_card"
                 required
                 label="หมายเลขประจำตัวประชาชน"
                 type="string"
                 value={patient.Id_card}
-                onChange={handleInputChange}
+                onChange={handleChange}
+                inputProps={{
+                  name: "Id_card",
+                }}
               />
             </FormControl>
           </Grid>
@@ -236,12 +230,14 @@ function CreatePatient() {
           <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <TextField
-                id="FirstName"
                 required
                 label="ชื่อ"
                 type="string"
                 value={patient.FirstName}
-                onChange={handleInputChange}
+                onChange={handleChange}
+                inputProps={{
+                  name: "FirstName",
+                }}
               />
             </FormControl>
           </Grid>
@@ -249,11 +245,13 @@ function CreatePatient() {
             <FormControl fullWidth>
               <TextField
                 required
-                id="LastName"
                 label="นามสกุล"
                 type="string"
                 value={patient.LastName}
-                onChange={handleInputChange}
+                onChange={handleChange}
+                inputProps={{
+                  name: "LastName",
+                }}
               />
             </FormControl>
           </Grid>
@@ -262,7 +260,6 @@ function CreatePatient() {
               <InputLabel>เพศ</InputLabel>
               <Select
                 label="เพศ"
-                id="GenderID"
                 value={patient.GenderID}
                 onChange={handleChange}
                 variant="outlined"
@@ -285,7 +282,6 @@ function CreatePatient() {
                 variant="inline"
                 inputVariant="outlined"
                 name="Birthdate"
-                id="Birthdate"
                 format="dd/MM/yyyy"
                 value={selectedDate}
                 onChange={handleDateChange}
@@ -296,12 +292,11 @@ function CreatePatient() {
             <FormControl fullWidth>
               <TextField
                 label="อายุ"
-                id="Age"
                 variant="outlined"
-                onChange={handleInputChange}
+                onChange={handleChange}
                 value={patient.Age}
                 type="number"
-                inputProps={{ min: 0 }}
+                inputProps={{ min: 0,max:120 ,name:"Age"}}
               />
             </FormControl>
           </Grid>
@@ -309,8 +304,6 @@ function CreatePatient() {
             <FormControl fullWidth variant="outlined">
               <p>ประวัติการแพ้ยา</p>
               <Select
-              
-                id="outlined-select-currency"
                 value={patient.AllergyID}
                 onChange={handleChange}
                 inputProps={{
@@ -329,8 +322,6 @@ function CreatePatient() {
             <FormControl fullWidth variant="outlined">
               <p>โรคประจำตัว</p>
               <Select
-        
-                id="Underlying_diseaseID"
                 value={patient.Underlying_diseaseID}
                 onChange={handleChange}
                 inputProps={{
@@ -357,7 +348,6 @@ function CreatePatient() {
               <Select
                 native
                 disabled
-                id="RecorderID"
                 value={patient.RecorderID}
                 onChange={handleChange}
 
