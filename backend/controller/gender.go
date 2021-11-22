@@ -2,8 +2,9 @@ package controller
 
 import (
 	"net/http"
-	"github.com/phu024/G13-Outpatient-Management/entity"
+
 	"github.com/gin-gonic/gin"
+	"github.com/phu024/G13-Outpatient-Management/entity"
 )
 
 // POST /genders
@@ -33,7 +34,7 @@ func GetGender(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": gender})
 }
 
-// GET /genders
+// GET All /genders
 func ListGenders(c *gin.Context) {
 	var genders []entity.Gender
 	if err := entity.DB().Raw("SELECT * FROM genders").Scan(&genders).Error; err != nil {
